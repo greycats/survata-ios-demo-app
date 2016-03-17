@@ -1,0 +1,10 @@
+platform :ios, '8.0'
+
+use_frameworks!
+
+pod 'Survata', :git => 'git@github.com:greycats/survata-ios-sdk.git', :commit => 'f288d683'
+# pod 'Survata', :path => '../survata-ios-sdk'
+pod 'Greycats/Graphics'
+pod 'SVProgressHUD'
+pod 'Greycats/FormField', '~> 2.4.1'
+pod 'HockeySDK', '~> 3.8.5'
