@@ -38,6 +38,17 @@ func createSurvey() {
     }
     
 ```
+As you can probably tell, I created a Settings.swift file to store my information. This is part of it.
+```swift
+struct Settings {
+	static var publisherId: String! = "survata-test"
+	static var previewId: String! = "46b140a358cd4fe7b425aa361b41bed9"
+	static var contentName: String!
+	static var forceZipcode: String!
+	static var sendZipcode: Bool = true
+}
+```
+
 If the survey is created successfully, I triggered the showSurveyButton() and showFull() functions to display them.
 ```swift
 func showFull() {
