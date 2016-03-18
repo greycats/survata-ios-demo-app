@@ -10,7 +10,7 @@ Once you have that installed, it should create a .xcworkspace. Use that instead 
 ## 3. Integrating SurveyWall
 You can display it in your project however you like, but I chose to use a UIView, an ActivityIndicatorView, and a Button in order to trigger the creation of the survey. 
 
-```
+```swift
 func createSurvey() {
         if created { return }
         let option = SurveyDebugOption(publisher: Settings.publisherId)
