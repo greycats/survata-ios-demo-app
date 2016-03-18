@@ -12,10 +12,13 @@ import SVProgressHUD
 import Greycats
 import Survata
 
+var score = 0
+var entered = [Int: Int]()
+
 
 class QuestionTableViewController: UIViewController {
     
-    @IBOutlet weak var surveyMask: UIView!
+    @IBOutlet weak var surveyMask: GradientView!
     @IBOutlet weak var surveyIndicator: UIActivityIndicatorView!
     @IBOutlet weak var scoreButton: UIButton!
     @IBOutlet weak var scoreLabel2: UILabel!
@@ -26,38 +29,53 @@ class QuestionTableViewController: UIViewController {
     
     @IBOutlet weak var questionLabel: UILabel!
     @IBOutlet weak var percentageLabel: UILabel!
-    var entered = [Int: Int]()
     var questions = [Question]()
-    var percentage = 69
+    var percentage = 50
     var ind = 0
-    var score = 0
-    var sliderValues : [Int] = [50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50]
-    var sliderDiffs : [Int] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
-    
     var actualPercentages : [Int] = []
     var survey: Survey!
     var currentQ: Question!
 
-
     @IBAction func upPercentage(sender: UIButton) {
         if percentage < 100 {
             percentage++
-            percentageLabel.text = "\(percentage)%"
+            storePercentage(ind, percentage: percentage)
+            percentageLabel.text = "\(percentage)"
         }
     }
     @IBAction func lowerPercentage(sender: UIButton) {
         if percentage > 0 {
-            percentageLabel.text = "\(--percentage)%"
+            percentage--
+            storePercentage(ind, percentage: percentage)
+            percentageLabel.text = "\(percentage)"
         }
     }
-    @IBAction func nextQuestion(sender: AnyObject) {
-        currentQ = questions[ind]
-        let inputPercentage = Int(percentageLabel.text!)
-        entered[ind] = inputPercentage
-        ind++
-        questionLabel.text = currentQ.name
-        
+    
+    func storePercentage(currentInd: Int, percentage: Int) {
+        entered[currentInd] = percentage
     }
+    
+    @IBAction func nextQuestion(sender: AnyObject)
+    {
+        percentage = 50
+        percentageLabel.text = String(percentage)
+        currentQ = questions[ind]
+        if ind == entered.count - 1{
+            for key in entered.keys {
+//                print(String(entered[key]))
+//                print("ACTUAL IS: " + String(actualPercentages[key]))
+                score += abs(entered[key]! - actualPercentages[key])
+            }
+            let scoreViewController : AnyObject! = self.storyboard!.instantiateViewControllerWithIdentifier("ScoreViewController") as! ScoreViewController
+            
+            self.showViewController(scoreViewController as! UIViewController, sender: scoreViewController)
+        } else {
+            ind++
+            currentQ = questions[ind]
+            questionLabel.text = currentQ.name
+        }
+    }
+    
     @IBAction func previousQuestion(sender: UIButton) {
         if ind > 0 {
             ind--
@@ -66,22 +84,13 @@ class QuestionTableViewController: UIViewController {
         questionLabel.text = currentQ.name
         
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         let longPressUp = UILongPressGestureRecognizer(target: self, action: "handleLongUpPress:")
         addButton.addGestureRecognizer(longPressUp)
-        
         let longPressDown = UILongPressGestureRecognizer(target: self, action: "handleLongDownPress:")
         downButton.addGestureRecognizer(longPressDown)
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
-        
-        //Load sample data.
         loadSampleQuestions()
     }
     
@@ -89,7 +98,7 @@ class QuestionTableViewController: UIViewController {
         if(gesture.state == .Began){
             percentage = percentage + 10
             if percentage < 100 {
-                percentageLabel.text = "\(percentage)%"
+                percentageLabel.text = "\(percentage)"
             }
         }
     }
@@ -97,12 +106,12 @@ class QuestionTableViewController: UIViewController {
         if(gesture.state == .Began){
             percentage = percentage - 10
             if percentage > 0 {
-                percentageLabel.text = "\(percentage)%"
+                percentageLabel.text = "\(percentage)"
             }
         }
     }
     
-      func loadSampleQuestions() {
+    func loadSampleQuestions() {
         let q1 = Question(name: "Guess the % of people who said BLUE was their favorite color.", percentage: 30)
         let q2 = Question(name: "Guess the % of people who said they eat candy at least once per day", percentage: 13)
         let q3 = Question(name: "Guess the % of people who most often watch TV shows live on television", percentage: 47)
@@ -146,46 +155,35 @@ class QuestionTableViewController: UIViewController {
         let q41 = Question(name: "Guess the percentage of people who said that Christmas/Hanukkah/Kwanzaa was their favorite holiday", percentage: 43)
         let q42 = Question(name: "Guess the percentage of people who don't have a favorite Starburst flavor", percentage: 37)
         let q43 = Question(name: "Guess the percentage of people who prefer Android over iPhone", percentage: 28)
-        let q44 = Question(name: "Guess the % of people who said that McDonald's was their favortie coffee chain", percentage: 6)
+        let q44 = Question(name: "Guess the % of people who said that McDonald's was their favorite coffee chain", percentage: 6)
         let arr = [Question](arrayLiteral: q1!, q2!, q3!, q4!, q5!, q6!, q7!, q8!, q9!, q10!, q11!, q12!, q13!, q14!, q15!, q16!, q17!, q18!, q19!, q20!, q21!, q22!, q23!, q24!, q25!, q26!, q27!, q28!, q29!, q30!, q31!, q32!, q33!, q34!, q35!, q36!, q37!, q38!, q39!, q40!, q41!, q42!, q43!, q44!)
+        questionLabel.text = arr[0].name
+        var i = 0
         for q in arr {
             questions.append(q)
             actualPercentages.append(q.percentage)
+            entered[i] = 50
+            i++
+
         }
     }
-    @IBAction func scoreDisplayed(sender: UIButton!) {
-        score = 0
-        print(actualPercentages)
-        for index in 0...43 {
-            score += abs(sliderValues[index] - actualPercentages[index])
-        }
-        //print(sliderDiffs)
-        let scoreText = String(score)
-        self.scoreLabel2.text = scoreText
-        print(score)
-    }
-    override func didReceiveMemoryWarning() {
+        override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
 
-    // MARK: - Table view data source
-
-    
-    
-    
-    
-        var created = false
+    var created = false
     var locationManager: CLLocationManager!
+    
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        if CLLocationManager.authorizationStatus() == .NotDetermined {
+        /*if CLLocationManager.authorizationStatus() == .NotDetermined {
             locationManager = CLLocationManager()
             //locationManager.delegate = self
             locationManager.requestWhenInUseAuthorization()
-        } else {
+        } else {*/
             createSurvey()
-        }
+        //}
     }
     
     func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
@@ -217,19 +215,19 @@ class QuestionTableViewController: UIViewController {
     }
     
     func showFull() {
-//        surveyMask.hidden = true
+       surveyMask.hidden = true
     
     }
     
     func showSurveyButton() {
-//        surveyMask.hidden = false
-//        surveyButton.hidden = false
-//        surveyIndicator.stopAnimating()
+        surveyMask.hidden = false
+        surveyButton.hidden = false
+        surveyIndicator.stopAnimating()
     }
     
     @IBAction func startSurvey(sender: UIButton) {
-        createSurvey()
         if (survey != nil){
+            score -= 100
             survey.createSurveyWall { result in
                 delay(2) {
                     SVProgressHUD.dismiss()
@@ -251,12 +249,9 @@ class QuestionTableViewController: UIViewController {
         } else {
             print("survey is nil")
         }
-        
-
     }
    
     func createSurvey() {
-        print("hi")
         if created { return }
         let option = SurveyDebugOption(publisher: Settings.publisherId)
         option.preview = Settings.previewId
@@ -265,21 +260,15 @@ class QuestionTableViewController: UIViewController {
         option.contentName = Settings.contentName
         survey = Survey(option: option)
         
-        survey.create { availability in
-            if availability == .Available {
-                self.surveyButton.hidden = false
+        survey.create {[weak self] result in
+            self?.created = true
+            switch result {
+            case .Available:
+                self?.showSurveyButton()
+            default:
+                self?.showFull()
             }
         }
-        
-//        survey.create {[weak self] result in
-//            self?.created = true
-//            switch result {
-//            case .Available:
-//                self?.showSurveyButton()
-//            default:
-//                self?.showFull()
-//            }
-//        }
     }
     
 

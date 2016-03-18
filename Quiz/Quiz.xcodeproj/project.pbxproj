@@ -18,6 +18,8 @@
 		FE0EAB5A1C98A2550018290E /* QuestionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE0EAB571C98A2550018290E /* QuestionTableViewController.swift */; };
 		FE0EAB5C1C98A4DF0018290E /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE0EAB5B1C98A4DF0018290E /* Settings.swift */; };
 		FE7107231C9B5F55008988A9 /* objects.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE7107221C9B5F55008988A9 /* objects.swift */; };
+		FE7107251C9C7CF2008988A9 /* ScoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE7107241C9C7CF2008988A9 /* ScoreViewController.swift */; };
+		FE7107271C9C82A4008988A9 /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE7107261C9C82A4008988A9 /* StartViewController.swift */; };
 		FEC7BEB21C9B4F6700E481DE /* Demo.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEC7BEB11C9B4F6700E481DE /* Demo.swift */; };
 /* End PBXBuildFile section */
 
@@ -37,6 +39,8 @@
 		FE0EAB571C98A2550018290E /* QuestionTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionTableViewController.swift; sourceTree = "<group>"; };
 		FE0EAB5B1C98A4DF0018290E /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		FE7107221C9B5F55008988A9 /* objects.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = objects.swift; sourceTree = "<group>"; };
+		FE7107241C9C7CF2008988A9 /* ScoreViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScoreViewController.swift; sourceTree = "<group>"; };
+		FE7107261C9C82A4008988A9 /* StartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
 		FEC7BEB11C9B4F6700E481DE /* Demo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Demo.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -94,6 +98,8 @@
 				FE0EAB551C98A2550018290E /* Question.swift */,
 				FE0EAB561C98A2550018290E /* QuestionTableViewCell.swift */,
 				FE0EAB571C98A2550018290E /* QuestionTableViewController.swift */,
+				FE7107261C9C82A4008988A9 /* StartViewController.swift */,
+				FE7107241C9C7CF2008988A9 /* ScoreViewController.swift */,
 				FEC7BEB11C9B4F6700E481DE /* Demo.swift */,
 				FE0EAB5B1C98A4DF0018290E /* Settings.swift */,
 				B58BFE801C965C8C002EC9F1 /* AppDelegate.swift */,
@@ -233,9 +239,11 @@
 				FE7107231C9B5F55008988A9 /* objects.swift in Sources */,
 				FE0EAB591C98A2550018290E /* QuestionTableViewCell.swift in Sources */,
 				FE0EAB5A1C98A2550018290E /* QuestionTableViewController.swift in Sources */,
+				FE7107271C9C82A4008988A9 /* StartViewController.swift in Sources */,
 				FEC7BEB21C9B4F6700E481DE /* Demo.swift in Sources */,
 				B58BFE831C965C8C002EC9F1 /* ViewController.swift in Sources */,
 				B58BFE811C965C8C002EC9F1 /* AppDelegate.swift in Sources */,
+				FE7107251C9C7CF2008988A9 /* ScoreViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
