@@ -94,7 +94,6 @@ After that, when the button is displayed, I defined a function called startSurve
 If everything works 🙏, it should display the survey!
 
 
-![alt text](http://media2.giphy.com/media/3XdsWf4oqSZ6E/giphy.gif)
 
 
 
