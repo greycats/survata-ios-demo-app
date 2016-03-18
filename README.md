@@ -7,8 +7,14 @@ If your computer doesn't recognize pod, it's because you don't have Cocoapods in
 
 Once you have that installed, it should create a .xcworkspace. Use that instead of the .xcodeproj. 
 
-## 3. Integrating SurveyWall
+## 3. Integrating The Survata SDK
 You can display it in your project however you like, but I chose to use a UIView, an ActivityIndicatorView, and a Button in order to trigger the creation of the survey. 
+```swift
+    @IBOutlet weak var surveyMask: GradientView!
+    @IBOutlet weak var surveyIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var scoreButton: UIButton!
+```
+Then, I used the function "createSurvey()" to create the survey. Initialize it with the appropriate properties such as publisherId, zipcode, etc. 
 
 ```swift
 func createSurvey() {
@@ -30,7 +36,50 @@ func createSurvey() {
             }
         }
     }
+    
 ```
+If the survey is created successfully, I triggered the showSurveyButton() and showFull() functions to display them.
+```swift
+func showFull() {
+       surveyMask.hidden = true
+    
+    }
+    
+    func showSurveyButton() {
+        surveyMask.hidden = false
+        surveyButton.hidden = false
+        surveyIndicator.stopAnimating()
+    }
+```
+After that, when the button is displayed, I defined a function called startSurvey() that will display the survey once the button is tapped (createSurveyWall()). 
+```swift
+@IBAction func startSurvey(sender: UIButton) {
+        if (survey != nil){
+            score -= 100
+            survey.createSurveyWall { result in
+                delay(2) {
+                    SVProgressHUD.dismiss()
+                }
+                switch result {
+                case .Completed:
+                    SVProgressHUD.showInfoWithStatus("'surveyWall': completed")
+                    return
+                case .Canceled:
+                    SVProgressHUD.showInfoWithStatus("'surveyWall': canceled")
+                case .CreditEarned:
+                    SVProgressHUD.showInfoWithStatus("'surveyWall': credit earned")
+                case .NetworkNotAvailable:
+                    SVProgressHUD.showInfoWithStatus("'surveyWall': network not available")
+                case .Skipped:
+                    SVProgressHUD.showInfoWithStatus("'surveyWall': skipped")
+                }
+            }
+        } else {
+            print("survey is nil")
+        }
+    }
+```
+
 ![alt text](http://media2.giphy.com/media/3XdsWf4oqSZ6E/giphy.gif)
 
 
