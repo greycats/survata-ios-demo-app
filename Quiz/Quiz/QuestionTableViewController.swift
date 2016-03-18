@@ -54,16 +54,22 @@ class QuestionTableViewController: UIViewController {
     func storePercentage(currentInd: Int, percentage: Int) {
         entered[currentInd] = percentage
     }
+    @IBAction func previousQuestion(sender: AnyObject) {
+        currentQ = questions[ind]
+        if ind > 0 {
+            ind--
+        }
+        currentQ = questions[ind]
+        questionLabel.text = currentQ.name
+    }
     
-    @IBAction func nextQuestion(sender: AnyObject)
-    {
+    @IBAction func nextQuestion(sender: AnyObject){
         percentage = 50
         percentageLabel.text = String(percentage)
         currentQ = questions[ind]
         if ind == entered.count - 1{
             for key in entered.keys {
-//                print(String(entered[key]))
-//                print("ACTUAL IS: " + String(actualPercentages[key]))
+                
                 score += abs(entered[key]! - actualPercentages[key])
             }
             let scoreViewController : AnyObject! = self.storyboard!.instantiateViewControllerWithIdentifier("ScoreViewController") as! ScoreViewController
@@ -75,15 +81,7 @@ class QuestionTableViewController: UIViewController {
             questionLabel.text = currentQ.name
         }
     }
-    
-    @IBAction func previousQuestion(sender: UIButton) {
-        if ind > 0 {
-            ind--
-        }
-        currentQ = questions[ind]
-        questionLabel.text = currentQ.name
-        
-    }
+  
     
     override func viewDidLoad() {
         super.viewDidLoad()
