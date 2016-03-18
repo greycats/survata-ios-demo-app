@@ -16,13 +16,13 @@ import Survata
 class QuestionTableViewController: UIViewController {
     
     @IBOutlet weak var surveyMask: UIView!
-    @IBOutlet weak var surveyButton: UIButton!
     @IBOutlet weak var surveyIndicator: UIActivityIndicatorView!
     @IBOutlet weak var scoreButton: UIButton!
     @IBOutlet weak var scoreLabel2: UILabel!
     //MARK: Properties
     @IBOutlet weak var addButton: UIButton!
     @IBOutlet weak var downButton: UIButton!
+    @IBOutlet weak var surveyButton: UIButton!
     
     @IBOutlet weak var questionLabel: UILabel!
     @IBOutlet weak var percentageLabel: UILabel!
@@ -217,18 +217,18 @@ class QuestionTableViewController: UIViewController {
     }
     
     func showFull() {
-        surveyMask.hidden = true
+//        surveyMask.hidden = true
     
     }
     
     func showSurveyButton() {
-        surveyMask.hidden = false
-        surveyButton.hidden = false
-        surveyIndicator.stopAnimating()
+//        surveyMask.hidden = false
+//        surveyButton.hidden = false
+//        surveyIndicator.stopAnimating()
     }
     
     @IBAction func startSurvey(sender: UIButton) {
-        
+        createSurvey()
         if (survey != nil){
             survey.createSurveyWall { result in
                 delay(2) {
@@ -256,22 +256,30 @@ class QuestionTableViewController: UIViewController {
     }
    
     func createSurvey() {
+        print("hi")
         if created { return }
-        let option = SurveyOption(publisher: Settings.publisherId)
-//        option.preview = Settings.previewId
-//        option.zipcode = Settings.forceZipcode
-//        option.sendZipcode = Settings.sendZipcode
+        let option = SurveyDebugOption(publisher: Settings.publisherId)
+        option.preview = Settings.previewId
+        option.zipcode = Settings.forceZipcode
+        option.sendZipcode = Settings.sendZipcode
         option.contentName = Settings.contentName
         survey = Survey(option: option)
-        survey.create {[weak self] result in
-            self?.created = true
-            switch result {
-            case .Available:
-                self?.showSurveyButton()
-            default:
-                self?.showFull()
+        
+        survey.create { availability in
+            if availability == .Available {
+                self.surveyButton.hidden = false
             }
         }
+        
+//        survey.create {[weak self] result in
+//            self?.created = true
+//            switch result {
+//            case .Available:
+//                self?.showSurveyButton()
+//            default:
+//                self?.showFull()
+//            }
+//        }
     }
     
 

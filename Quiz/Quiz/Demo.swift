@@ -66,7 +66,10 @@ class DemoViewController: UIViewController, CLLocationManagerDelegate {
 		surveyIndicator.stopAnimating()
 	}
 	
-	@IBAction func startSurvey() {
+    @IBAction func startSurvey(sender: UIButton) {
+        
+    }
+	//@IBAction func startSurvey() {
 //		Survey.presentFromController(self) {[weak self] result in
 //			switch result {
 //			case .Completed:
@@ -75,7 +78,7 @@ class DemoViewController: UIViewController, CLLocationManagerDelegate {
 //				self?.showSurveyButton()
 //			}
 //		}
-	}
+	//}
 	
 	func createSurvey() {
 		if created { return }

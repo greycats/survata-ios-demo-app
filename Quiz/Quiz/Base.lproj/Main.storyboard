@@ -187,7 +187,7 @@
                         <outlet property="downButton" destination="8Ko-wS-s79" id="glL-MF-t1p"/>
                         <outlet property="percentageLabel" destination="KkX-EA-lFV" id="32M-uh-0vS"/>
                         <outlet property="questionLabel" destination="fOL-mF-EZB" id="Xha-nO-Zvc"/>
-                        <outlet property="surveyButton" destination="n2Z-Qb-5cd" id="bk6-lp-d2U"/>
+                        <outlet property="surveyButton" destination="n2Z-Qb-5cd" id="sK1-RC-L1U"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Kl4-dE-g8R" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -215,6 +215,9 @@
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="61p-Ud-hiw">
                                         <rect key="frame" x="277" y="533" width="46" height="30"/>
                                         <state key="normal" title="Button"/>
+                                        <connections>
+                                            <action selector="startSurvey:" destination="kE7-bK-Duz" eventType="touchUpInside" id="x3I-5D-AdD"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

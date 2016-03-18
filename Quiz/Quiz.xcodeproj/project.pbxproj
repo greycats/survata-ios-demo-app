@@ -17,6 +17,7 @@
 		FE0EAB591C98A2550018290E /* QuestionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE0EAB561C98A2550018290E /* QuestionTableViewCell.swift */; };
 		FE0EAB5A1C98A2550018290E /* QuestionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE0EAB571C98A2550018290E /* QuestionTableViewController.swift */; };
 		FE0EAB5C1C98A4DF0018290E /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE0EAB5B1C98A4DF0018290E /* Settings.swift */; };
+		FE7107231C9B5F55008988A9 /* objects.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE7107221C9B5F55008988A9 /* objects.swift */; };
 		FEC7BEB21C9B4F6700E481DE /* Demo.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEC7BEB11C9B4F6700E481DE /* Demo.swift */; };
 /* End PBXBuildFile section */
 
@@ -35,6 +36,7 @@
 		FE0EAB561C98A2550018290E /* QuestionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionTableViewCell.swift; sourceTree = "<group>"; };
 		FE0EAB571C98A2550018290E /* QuestionTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionTableViewController.swift; sourceTree = "<group>"; };
 		FE0EAB5B1C98A4DF0018290E /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
+		FE7107221C9B5F55008988A9 /* objects.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = objects.swift; sourceTree = "<group>"; };
 		FEC7BEB11C9B4F6700E481DE /* Demo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Demo.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -88,6 +90,7 @@
 		B58BFE7F1C965C8C002EC9F1 /* Quiz */ = {
 			isa = PBXGroup;
 			children = (
+				FE7107221C9B5F55008988A9 /* objects.swift */,
 				FE0EAB551C98A2550018290E /* Question.swift */,
 				FE0EAB561C98A2550018290E /* QuestionTableViewCell.swift */,
 				FE0EAB571C98A2550018290E /* QuestionTableViewController.swift */,
@@ -227,6 +230,7 @@
 			files = (
 				FE0EAB5C1C98A4DF0018290E /* Settings.swift in Sources */,
 				FE0EAB581C98A2550018290E /* Question.swift in Sources */,
+				FE7107231C9B5F55008988A9 /* objects.swift in Sources */,
 				FE0EAB591C98A2550018290E /* QuestionTableViewCell.swift in Sources */,
 				FE0EAB5A1C98A2550018290E /* QuestionTableViewController.swift in Sources */,
 				FEC7BEB21C9B4F6700E481DE /* Demo.swift in Sources */,
