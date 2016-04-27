@@ -7,6 +7,14 @@ If your computer doesn't recognize pod, it's because you don't have Cocoapods in
 
 Once you have that installed, it should create a .xcworkspace. Use that instead of the .xcodeproj. 
 
+while "pod install" is running, if it begins to hang for a long time on 'Updating local specs respositories':
+    try running these commands...
+```
+pod repo remove master
+pod setup
+pod install
+```
+
 ## 3. Integrating The Survata SDK
 You can display it in your project however you like, but I chose to use a UIView, an ActivityIndicatorView, and a Button in order to trigger the creation of the survey. 
 ```swift
