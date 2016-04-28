@@ -2,13 +2,19 @@
 
 ## 1. Clone the git repository locally. 
 
+Make sure you have the latest updates to the repository.
+ie. ‘git pull’
+
+Note: We assume that you already have a project in Xcode and that this project is opened in Xcode 7 or later.
+The SDK supports iOS 8.0 and later.
+
 ## 2. Run "pod install" in order to install all the necessary modules. 
 If your computer doesn't recognize pod, it's because you don't have Cocoapods installed. Go install it!
 
 Once you have that installed, it should create a .xcworkspace. Use that instead of the .xcodeproj. 
 
-while "pod install" is running, if it begins to hang for a long time on 'Updating local specs respositories':
-    try running these commands...
+while "pod install" is running, if it begins to hang for a long time:
+try running these commands...
 ```
 pod repo remove master
 pod setup
