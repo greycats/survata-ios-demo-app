@@ -15,7 +15,7 @@ class ScoreViewController: UIViewController {
     @IBOutlet weak var playAgainButton: UIButton!
     override func viewDidLoad() {
         playAgainButton.backgroundColor = UIColor.whiteColor()
-        scoreLabel.text = String(score)
+        //scoreLabel.text = String(counter1)
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
     }
