@@ -14,6 +14,10 @@ import Survata
 
 var score = 0
 var entered = [Int: Int]()
+var qsAnswered = 0
+var failed = false 
+
+
 
 
 class QuestionTableViewController: UIViewController {
@@ -27,25 +31,38 @@ class QuestionTableViewController: UIViewController {
     @IBOutlet weak var downButton: UIButton!
     @IBOutlet weak var surveyButton: UIButton!
     
+    @IBOutlet weak var progressLabel: UILabel!
     @IBOutlet weak var questionLabel: UILabel!
     @IBOutlet weak var percentageLabel: UILabel!
+    @IBOutlet weak var progressView: UIProgressView!
+    @IBOutlet weak var questionLabelTop: UILabel!
+    
     var questions = [Question]()
     var percentage = 50
     var ind = 0
+    //var score = 0
+    var qsAnswered = 0
     var actualPercentages : [Int] = []
     var survey: Survey!
     var currentQ: Question!
-
+    var counter1:Int = 100 {
+        didSet {
+            let fractionalProgress = Float(counter1) / 100.0
+            let animated = counter1 != 0
+            progressView.setProgress(fractionalProgress, animated: animated)
+            progressLabel.text = String(("\(counter1)%"))
+        }
+    }
     @IBAction func upPercentage(sender: UIButton) {
         if percentage < 100 {
-            percentage++
+            percentage += 1
             storePercentage(ind, percentage: percentage)
             percentageLabel.text = "\(percentage)"
         }
     }
     @IBAction func lowerPercentage(sender: UIButton) {
         if percentage > 0 {
-            percentage--
+            percentage -= 1
             storePercentage(ind, percentage: percentage)
             percentageLabel.text = "\(percentage)"
         }
@@ -57,28 +74,60 @@ class QuestionTableViewController: UIViewController {
     
     @IBAction func nextQuestion(sender: AnyObject)
     {
-        percentage = 50
-        percentageLabel.text = String(percentage)
-        currentQ = questions[ind]
-        if ind == entered.count - 1{
-            for key in entered.keys {
-//                print(String(entered[key]))
-//                print("ACTUAL IS: " + String(actualPercentages[key]))
-                score += abs(entered[key]! - actualPercentages[key])
-            }
-            let scoreViewController : AnyObject! = self.storyboard!.instantiateViewControllerWithIdentifier("ScoreViewController") as! ScoreViewController
-            
-            self.showViewController(scoreViewController as! UIViewController, sender: scoreViewController)
+        if (counter1 <= 0){
+            checkIfEnd(counter1)
+            print("Game is over")
         } else {
-            ind++
+            print(ind)
+            qsAnswered += 1
+            questionLabelTop.text = "Question #" + String(ind+2)
+            percentage = 50
+            percentageLabel.text = String(percentage)
             currentQ = questions[ind]
-            questionLabel.text = currentQ.name
+            if ind == entered.count - 1{
+                let scoreViewController : AnyObject! = self.storyboard!.instantiateViewControllerWithIdentifier("ScoreViewController") as! ScoreViewController
+                
+                self.showViewController(scoreViewController as! UIViewController, sender: scoreViewController)
+            } else {
+                print("IND IS: " + String(ind))
+                print("COUNTER IS: " + String(counter1))
+                print("ACTUAL IS: " + String(actualPercentages[ind]))
+                print("WHAT YOU ENTERED IS: "+String(entered[ind]))
+                print("DIFFERENCE IS: " + String(entered[ind]! - actualPercentages[ind]))
+                counter1 -= abs(entered[ind]! - actualPercentages[ind])
+                progressView.setProgress(Float(counter1), animated: true)
+                progressLabel.text = String(("\(counter1)%"))
+                
+                ind += 1
+                currentQ = questions[ind]
+                questionLabel.text = currentQ.name
+            }
+        }
+    }
+    
+    func checkIfEnd(counter1: Int) -> Bool{
+        score = counter1
+        if counter1 <= 0 || ind >= 17 {
+            if counter1 <= 0 {
+                failed = true
+                let scoreViewController : AnyObject! = self.storyboard!.instantiateViewControllerWithIdentifier("ScoreViewController") as! ScoreViewController
+                
+                self.showViewController(scoreViewController as! UIViewController, sender: scoreViewController)
+            } else if ind >= 17 {
+                failed = false
+                let scoreViewController : AnyObject! = self.storyboard!.instantiateViewControllerWithIdentifier("ScoreViewController") as! ScoreViewController
+                
+                self.showViewController(scoreViewController as! UIViewController, sender: scoreViewController)
+            }
+            return true
+        } else {
+            return false
         }
     }
     
     @IBAction func previousQuestion(sender: UIButton) {
         if ind > 0 {
-            ind--
+            ind -= 1
         }
         currentQ = questions[ind]
         questionLabel.text = currentQ.name
@@ -86,6 +135,8 @@ class QuestionTableViewController: UIViewController {
     }
     
     override func viewDidLoad() {
+        questionLabel.sizeToFit()
+        surveyIndicator.hidden = true
         super.viewDidLoad()
         let longPressUp = UILongPressGestureRecognizer(target: self, action: "handleLongUpPress:")
         addButton.addGestureRecognizer(longPressUp)
@@ -97,6 +148,7 @@ class QuestionTableViewController: UIViewController {
     func handleLongUpPress(gesture: UILongPressGestureRecognizer) {
         if(gesture.state == .Began){
             percentage = percentage + 10
+            storePercentage(ind, percentage: percentage)
             if percentage < 100 {
                 percentageLabel.text = "\(percentage)"
             }
@@ -105,6 +157,7 @@ class QuestionTableViewController: UIViewController {
     func handleLongDownPress(gesture: UILongPressGestureRecognizer) {
         if(gesture.state == .Began){
             percentage = percentage - 10
+            storePercentage(ind, percentage: percentage)
             if percentage > 0 {
                 percentageLabel.text = "\(percentage)"
             }
@@ -163,7 +216,7 @@ class QuestionTableViewController: UIViewController {
             questions.append(q)
             actualPercentages.append(q.percentage)
             entered[i] = 50
-            i++
+            i += 1
 
         }
     }
@@ -177,13 +230,8 @@ class QuestionTableViewController: UIViewController {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        /*if CLLocationManager.authorizationStatus() == .NotDetermined {
-            locationManager = CLLocationManager()
-            //locationManager.delegate = self
-            locationManager.requestWhenInUseAuthorization()
-        } else {*/
+       
             createSurvey()
-        //}
     }
     
     func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
@@ -227,7 +275,11 @@ class QuestionTableViewController: UIViewController {
     
     @IBAction func startSurvey(sender: UIButton) {
         if (survey != nil){
-            score -= 100
+            if(counter1 + 20 <= 100){
+                counter1 += 20
+            } else {
+                counter1 = 100
+            }
             survey.createSurveyWall { result in
                 delay(2) {
                     SVProgressHUD.dismiss()
