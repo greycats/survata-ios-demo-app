@@ -74,9 +74,13 @@ class QuestionTableViewController: UIViewController {
     
     @IBAction func nextQuestion(sender: AnyObject)
     {
-        if (counter1 <= 0){
+        if (counter1 - 20 <= 0){
+            progressLabel.text = String(("0%"))
             checkIfEnd(counter1)
             print("Game is over")
+            let scoreViewController : AnyObject! = self.storyboard!.instantiateViewControllerWithIdentifier("ScoreViewController") as! ScoreViewController
+            
+            self.showViewController(scoreViewController as! UIViewController, sender: scoreViewController)
         } else {
             print(ind)
             qsAnswered += 1
@@ -286,16 +290,16 @@ class QuestionTableViewController: UIViewController {
                 }
                 switch result {
                 case .Completed:
-                    SVProgressHUD.showInfoWithStatus("'surveyWall': completed")
+                    SVProgressHUD.showInfoWithStatus("Completed")
                     return
                 case .Canceled:
-                    SVProgressHUD.showInfoWithStatus("'surveyWall': canceled")
+                    SVProgressHUD.showInfoWithStatus("Canceled")
                 case .CreditEarned:
-                    SVProgressHUD.showInfoWithStatus("'surveyWall': credit earned")
+                    SVProgressHUD.showInfoWithStatus("Credit earned")
                 case .NetworkNotAvailable:
-                    SVProgressHUD.showInfoWithStatus("'surveyWall': network not available")
+                    SVProgressHUD.showInfoWithStatus("Network not available")
                 case .Skipped:
-                    SVProgressHUD.showInfoWithStatus("'surveyWall': skipped")
+                    SVProgressHUD.showInfoWithStatus("Skipped")
                 }
             }
         } else {

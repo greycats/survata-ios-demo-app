@@ -10,7 +10,7 @@ import Greycats
 
 struct Settings {
 	static var publisherId: String! = "a152f0c5-0ba4-4b3e-8a0a-07ec9f96c5fd" //"survata-test"
-	static var previewId: String! = "46b140a358cd4fe7b425aa361b41bed9"
+	static var previewId: String! = "5fd725139884422e9f1bb28f776c702d"
 	static var contentName: String!
 	static var forceZipcode: String!
 	static var sendZipcode: Bool = true
@@ -63,7 +63,7 @@ class SettingsViewController: UIViewController {
 	
 	@IBAction func reset() {
 		Settings.publisherId = "survata-test"
-		Settings.previewId = "46b140a358cd4fe7b425aa361b41bed9"
+		Settings.previewId = "5fd725139884422e9f1bb28f776c702d"
 		publisherIdField.bind(&Settings.publisherId)
 		previewField.bind(&Settings.previewId)
 		contentNameField.bind(&Settings.contentName)

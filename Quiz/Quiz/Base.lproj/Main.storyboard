@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="XDv-6g-zyb">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="XDv-6g-zyb">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -340,11 +340,21 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Background" translatesAutoresizingMaskIntoConstraints="NO" id="lbS-5J-d3r">
-                                <rect key="frame" x="-10" y="-26" width="395" height="719"/>
+                                <rect key="frame" x="-51" y="-48" width="466" height="741"/>
                                 <gestureRecognizers/>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You managed to answer 7 questions!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="20" translatesAutoresizingMaskIntoConstraints="NO" id="VTp-3q-UBH">
+                                <rect key="frame" x="10" y="206" width="355" height="141"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i5W-78-kIa">
-                                <rect key="frame" x="152" y="564" width="71" height="30"/>
+                                <rect key="frame" x="127" y="523" width="121" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="8DV-46-jXR"/>
+                                    <constraint firstAttribute="width" constant="121" id="Amf-MA-7fI"/>
+                                </constraints>
                                 <state key="normal" title="Play Again">
                                     <color key="titleColor" red="0.0" green="0.46666666670000001" blue="0.57647058819999997" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
@@ -357,25 +367,19 @@
                                     <action selector="playAgain:" destination="4Ka-wA-UDg" eventType="touchUpInside" id="XMf-cQ-Kga"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You managed to answer 7 questions!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="20" translatesAutoresizingMaskIntoConstraints="NO" id="VTp-3q-UBH">
-                                <rect key="frame" x="10" y="206" width="355" height="66"/>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="lbS-5J-d3r" firstAttribute="leading" secondItem="9ZO-fL-QNK" secondAttribute="leadingMargin" constant="-67" id="3vU-sF-kBn"/>
                             <constraint firstItem="VTp-3q-UBH" firstAttribute="centerX" secondItem="9ZO-fL-QNK" secondAttribute="centerX" id="5Pv-pb-kCW"/>
-                            <constraint firstAttribute="bottomMargin" secondItem="lbS-5J-d3r" secondAttribute="bottom" constant="-26" id="8Q2-Em-7Eo"/>
+                            <constraint firstItem="i5W-78-kIa" firstAttribute="top" relation="lessThanOrEqual" secondItem="VTp-3q-UBH" secondAttribute="bottom" constant="176" id="7eh-hx-9fi"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="lbS-5J-d3r" secondAttribute="bottom" constant="-26" id="B6T-fy-RA0"/>
                             <constraint firstItem="VTp-3q-UBH" firstAttribute="width" secondItem="9ZO-fL-QNK" secondAttribute="width" constant="-20" id="FLo-f2-Efl"/>
-                            <constraint firstItem="lbS-5J-d3r" firstAttribute="top" secondItem="9ZO-fL-QNK" secondAttribute="topMargin" constant="-26" id="Kf7-ig-Be2"/>
-                            <constraint firstItem="lbS-5J-d3r" firstAttribute="leading" secondItem="9ZO-fL-QNK" secondAttribute="leadingMargin" constant="-26" id="LyQ-SD-XtU"/>
+                            <constraint firstItem="otX-EF-cQY" firstAttribute="top" relation="lessThanOrEqual" secondItem="i5W-78-kIa" secondAttribute="bottom" constant="100" id="N1g-PP-2nr"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="lbS-5J-d3r" secondAttribute="trailing" constant="-56" id="Pwz-g9-D11"/>
                             <constraint firstItem="VTp-3q-UBH" firstAttribute="top" secondItem="sL3-FN-9pY" secondAttribute="bottom" constant="186" id="Ry2-Og-nQA"/>
-                            <constraint firstItem="lbS-5J-d3r" firstAttribute="centerY" secondItem="9ZO-fL-QNK" secondAttribute="centerY" id="SjN-jk-DBv"/>
-                            <constraint firstItem="lbS-5J-d3r" firstAttribute="centerX" secondItem="9ZO-fL-QNK" secondAttribute="centerX" id="kIv-d2-XbQ"/>
-                            <constraint firstItem="i5W-78-kIa" firstAttribute="centerX" secondItem="9ZO-fL-QNK" secondAttribute="centerX" id="vGL-ml-30a"/>
-                            <constraint firstItem="otX-EF-cQY" firstAttribute="top" secondItem="i5W-78-kIa" secondAttribute="bottom" constant="73" id="wk8-cN-q8h"/>
+                            <constraint firstItem="i5W-78-kIa" firstAttribute="centerX" secondItem="VTp-3q-UBH" secondAttribute="centerX" id="hTM-wV-tSp"/>
+                            <constraint firstItem="lbS-5J-d3r" firstAttribute="top" secondItem="9ZO-fL-QNK" secondAttribute="topMargin" constant="-48" id="oaH-BO-m6A"/>
                         </constraints>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
