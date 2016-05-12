@@ -93,11 +93,11 @@ class QuestionTableViewController: UIViewController {
                 
                 self.showViewController(scoreViewController as! UIViewController, sender: scoreViewController)
             } else {
-                print("IND IS: " + String(ind))
-                print("COUNTER IS: " + String(counter1))
-                print("ACTUAL IS: " + String(actualPercentages[ind]))
-                print("WHAT YOU ENTERED IS: "+String(entered[ind]))
-                print("DIFFERENCE IS: " + String(difference))
+//                print("IND IS: " + String(ind))
+//                print("COUNTER IS: " + String(counter1))
+//                print("ACTUAL IS: " + String(actualPercentages[ind]))
+//                print("WHAT YOU ENTERED IS: "+String(entered[ind]))
+//                print("DIFFERENCE IS: " + String(difference))
                 counter1 -= difference
                 progressLabel.text = String(("\(counter1)%"))
                 randomNumber = randomInt(0, max: entered.count)
@@ -109,7 +109,7 @@ class QuestionTableViewController: UIViewController {
     }
     
     func checkIfEnd(counter1: Int){
-        print("Game is over")
+//        print("Game is over")
         let scoreViewController : AnyObject! = self.storyboard!.instantiateViewControllerWithIdentifier("ScoreViewController") as! ScoreViewController
         self.showViewController(scoreViewController as! UIViewController, sender: scoreViewController)
     }
@@ -128,9 +128,9 @@ class QuestionTableViewController: UIViewController {
         questionLabel.sizeToFit()
         surveyIndicator.hidden = true
         super.viewDidLoad()
-        let longPressUp = UILongPressGestureRecognizer(target: self, action: "handleLongUpPress:")
+        let longPressUp = UILongPressGestureRecognizer(target: self, action: #selector(QuestionTableViewController.handleLongUpPress(_:)))
         addButton.addGestureRecognizer(longPressUp)
-        let longPressDown = UILongPressGestureRecognizer(target: self, action: "handleLongDownPress:")
+        let longPressDown = UILongPressGestureRecognizer(target: self, action: #selector(QuestionTableViewController.handleLongDownPress(_:)))
         downButton.addGestureRecognizer(longPressDown)
         loadSampleQuestions()
     }

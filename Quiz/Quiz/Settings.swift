@@ -9,8 +9,8 @@
 import Greycats
 
 struct Settings {
-	static var publisherId: String! = "a152f0c5-0ba4-4b3e-8a0a-07ec9f96c5fd" //"survata-test"
-	static var previewId: String! = "5fd725139884422e9f1bb28f776c702d"
+	static var publisherId: String! = "a152f0c5-0ba4-4b3e-8a0a-07ec9f96c5fd"
+	static var previewId: String! = nil 
 	static var contentName: String!
 	static var forceZipcode: String!
 	static var sendZipcode: Bool = true
