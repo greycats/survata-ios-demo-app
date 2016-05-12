@@ -24,13 +24,15 @@ class ViewController: UIViewController {
 
 	@IBAction func lowerPercentage(sender: AnyObject) {
 		if percentage > 0 {
-			percentageLabel.text = "\(--percentage)%"
+            percentage -= 1
+			percentageLabel.text = "\(percentage)%"
 		}
 	}
 
 	@IBAction func upPercentage(sender: AnyObject) {
 		if percentage < 100 {
-			percentageLabel.text = "\(++percentage)%"
+            percentage += 1
+			percentageLabel.text = "\(percentage)%"
 		}
 	}
 }

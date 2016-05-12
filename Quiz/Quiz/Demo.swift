@@ -69,33 +69,8 @@ class DemoViewController: UIViewController, CLLocationManagerDelegate {
     @IBAction func startSurvey(sender: UIButton) {
         
     }
-	//@IBAction func startSurvey() {
-//		Survey.presentFromController(self) {[weak self] result in
-//			switch result {
-//			case .Completed:
-//				self?.showFull()
-//			default:
-//				self?.showSurveyButton()
-//			}
-//		}
-	//}
-	
+    
 	func createSurvey() {
 		if created { return }
-		//let option = SurveyOption(publisher: Settings.publisherId)
-//		option.preview = Settings.previewId
-//		option.zipcode = Settings.forceZipcode
-//		option.sendZipcode = Settings.sendZipcode
-//		option.contentName = Settings.contentName
-//		
-//		Survey.create(option) {[weak self] result in
-//			self?.created = true
-//			switch result {
-//			case .Available:
-//				self?.showSurveyButton()
-//			default:
-//				self?.showFull()
-//			}
-//		}
-	}
+        }
 }

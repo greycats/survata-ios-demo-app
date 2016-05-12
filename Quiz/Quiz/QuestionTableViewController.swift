@@ -26,11 +26,9 @@ class QuestionTableViewController: UIViewController {
     @IBOutlet weak var surveyIndicator: UIActivityIndicatorView!
     @IBOutlet weak var scoreButton: UIButton!
     @IBOutlet weak var scoreLabel2: UILabel!
-    //MARK: Properties
     @IBOutlet weak var addButton: UIButton!
     @IBOutlet weak var downButton: UIButton!
     @IBOutlet weak var surveyButton: UIButton!
-    
     @IBOutlet weak var progressLabel: UILabel!
     @IBOutlet weak var questionLabel: UILabel!
     @IBOutlet weak var percentageLabel: UILabel!
@@ -39,20 +37,19 @@ class QuestionTableViewController: UIViewController {
     
     var questions = [Question]()
     var percentage = 50
-    var ind = 0
-    //var score = 0
-    var qsAnswered = 0
+    var ind = 1
     var actualPercentages : [Int] = []
     var survey: Survey!
     var currentQ: Question!
-    var counter1:Int = 100 {
-        didSet {
-            let fractionalProgress = Float(counter1) / 100.0
-            let animated = counter1 != 0
-            progressView.setProgress(fractionalProgress, animated: animated)
-            progressLabel.text = String(("\(counter1)%"))
-        }
-    }
+    var counter1:Int = 100
+//    var counter1:Int = 100 {
+//        didSet {
+//            let fractionalProgress = Float(counter1 / 100)
+//            let animated = counter1 != 0
+//            progressView.setProgress(fractionalProgress, animated: animated)
+//            progressLabel.text = String(("\(counter1)%"))
+//        }
+//    }
     @IBAction func upPercentage(sender: UIButton) {
         if percentage < 100 {
             percentage += 1
@@ -67,6 +64,9 @@ class QuestionTableViewController: UIViewController {
             percentageLabel.text = "\(percentage)"
         }
     }
+    func randomInt(min: Int, max:Int) -> Int {
+        return min + Int(arc4random_uniform(UInt32(max - min + 1)))
+    }
     
     func storePercentage(currentInd: Int, percentage: Int) {
         entered[currentInd] = percentage
@@ -74,17 +74,17 @@ class QuestionTableViewController: UIViewController {
     
     @IBAction func nextQuestion(sender: AnyObject)
     {
-        if (counter1 - 20 <= 0){
+        var difference = abs(entered[ind]! - actualPercentages[ind])
+        var randomNumber = randomInt(0, max: entered.count)
+        if (counter1 - difference <= 0){
             progressLabel.text = String(("0%"))
             checkIfEnd(counter1)
-            print("Game is over")
             let scoreViewController : AnyObject! = self.storyboard!.instantiateViewControllerWithIdentifier("ScoreViewController") as! ScoreViewController
-            
             self.showViewController(scoreViewController as! UIViewController, sender: scoreViewController)
         } else {
             print(ind)
             qsAnswered += 1
-            questionLabelTop.text = "Question #" + String(ind+2)
+            questionLabelTop.text = "Question #" + String(qsAnswered + 1)
             percentage = 50
             percentageLabel.text = String(percentage)
             currentQ = questions[ind]
@@ -97,36 +97,21 @@ class QuestionTableViewController: UIViewController {
                 print("COUNTER IS: " + String(counter1))
                 print("ACTUAL IS: " + String(actualPercentages[ind]))
                 print("WHAT YOU ENTERED IS: "+String(entered[ind]))
-                print("DIFFERENCE IS: " + String(entered[ind]! - actualPercentages[ind]))
-                counter1 -= abs(entered[ind]! - actualPercentages[ind])
-                progressView.setProgress(Float(counter1), animated: true)
+                print("DIFFERENCE IS: " + String(difference))
+                counter1 -= difference
                 progressLabel.text = String(("\(counter1)%"))
-                
-                ind += 1
+                randomNumber = randomInt(0, max: entered.count)
+                ind = randomNumber
                 currentQ = questions[ind]
                 questionLabel.text = currentQ.name
             }
         }
     }
     
-    func checkIfEnd(counter1: Int) -> Bool{
-        score = counter1
-        if counter1 <= 0 || ind >= 17 {
-            if counter1 <= 0 {
-                failed = true
-                let scoreViewController : AnyObject! = self.storyboard!.instantiateViewControllerWithIdentifier("ScoreViewController") as! ScoreViewController
-                
-                self.showViewController(scoreViewController as! UIViewController, sender: scoreViewController)
-            } else if ind >= 17 {
-                failed = false
-                let scoreViewController : AnyObject! = self.storyboard!.instantiateViewControllerWithIdentifier("ScoreViewController") as! ScoreViewController
-                
-                self.showViewController(scoreViewController as! UIViewController, sender: scoreViewController)
-            }
-            return true
-        } else {
-            return false
-        }
+    func checkIfEnd(counter1: Int){
+        print("Game is over")
+        let scoreViewController : AnyObject! = self.storyboard!.instantiateViewControllerWithIdentifier("ScoreViewController") as! ScoreViewController
+        self.showViewController(scoreViewController as! UIViewController, sender: scoreViewController)
     }
     
     @IBAction func previousQuestion(sender: UIButton) {
@@ -139,6 +124,7 @@ class QuestionTableViewController: UIViewController {
     }
     
     override func viewDidLoad() {
+        //progressView.progress = Float(100)
         questionLabel.sizeToFit()
         surveyIndicator.hidden = true
         super.viewDidLoad()
@@ -328,49 +314,6 @@ class QuestionTableViewController: UIViewController {
     }
     
 
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
 
-    /*
-    // Override to support editing the table view.
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
-            // Delete the row from the data source
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-        } else if editingStyle == .Insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

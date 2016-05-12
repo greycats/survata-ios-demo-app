@@ -118,15 +118,26 @@
                                             <action selector="nextQuestion:" destination="v1R-kG-ll8" eventType="touchUpInside" id="vaV-bj-jhf"/>
                                         </connections>
                                     </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Take a survey to increase your life by 20%! " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P6U-qQ-TrV">
+                                        <rect key="frame" x="79" y="531" width="216" height="47"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="47" id="ROs-k1-ARM"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="JBv-kC-NRC" firstAttribute="centerY" secondItem="H6V-cM-8XG" secondAttribute="centerY" id="1Cp-hv-vrg"/>
                                     <constraint firstItem="NMG-7F-kGC" firstAttribute="top" secondItem="H6V-cM-8XG" secondAttribute="top" constant="36" id="CcF-Mb-mtS"/>
+                                    <constraint firstItem="P6U-qQ-TrV" firstAttribute="leading" secondItem="H6V-cM-8XG" secondAttribute="leading" constant="79" id="Dx7-c7-FyS"/>
                                     <constraint firstItem="JBv-kC-NRC" firstAttribute="top" secondItem="H6V-cM-8XG" secondAttribute="top" constant="-20" id="Iku-Tf-5jw"/>
                                     <constraint firstItem="JBv-kC-NRC" firstAttribute="leading" secondItem="H6V-cM-8XG" secondAttribute="leading" constant="-20" id="OKO-zV-cTd"/>
                                     <constraint firstItem="NqU-NE-vIq" firstAttribute="trailing" secondItem="H6V-cM-8XG" secondAttribute="trailing" id="aIE-0B-pd9"/>
                                     <constraint firstItem="NMG-7F-kGC" firstAttribute="centerX" secondItem="H6V-cM-8XG" secondAttribute="centerX" id="nBg-56-coi"/>
+                                    <constraint firstItem="P6U-qQ-TrV" firstAttribute="centerX" secondItem="NMG-7F-kGC" secondAttribute="centerX" id="ocb-Zg-tKj"/>
                                     <constraint firstItem="JBv-kC-NRC" firstAttribute="centerX" secondItem="H6V-cM-8XG" secondAttribute="centerX" id="sML-f6-fp5"/>
                                 </constraints>
                             </view>
@@ -201,9 +212,6 @@
                                     <action selector="upPercentage:" destination="v1R-kG-ll8" eventType="touchUpInside" id="B5H-XI-vO1"/>
                                 </connections>
                             </button>
-                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progressViewStyle="bar" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Xtm-ZG-BPa">
-                                <rect key="frame" x="30" y="431" width="315" height="3"/>
-                            </progressView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aSj-rP-C43" userLabel="Circle Container">
                                 <rect key="frame" x="51" y="137" width="273" height="273"/>
                                 <subviews>
@@ -234,8 +242,10 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="HRo-T7-7Wb" firstAttribute="top" secondItem="03C-eN-yVN" secondAttribute="bottom" constant="4" id="3gj-Np-GNt"/>
                             <constraint firstItem="03C-eN-yVN" firstAttribute="top" secondItem="aSj-rP-C43" secondAttribute="bottom" constant="18" id="8ee-cM-LHn"/>
                             <constraint firstItem="0xf-0q-LNQ" firstAttribute="leading" secondItem="W8g-Wc-Cuy" secondAttribute="leading" id="Adr-0S-1HG"/>
+                            <constraint firstItem="03C-eN-yVN" firstAttribute="centerX" secondItem="fOL-mF-EZB" secondAttribute="centerX" id="C2Z-B3-QdV"/>
                             <constraint firstAttribute="bottom" secondItem="n2Z-Qb-5cd" secondAttribute="bottom" constant="20" symbolic="YES" id="Euj-d4-hhR"/>
                             <constraint firstItem="H6V-cM-8XG" firstAttribute="leading" secondItem="W8g-Wc-Cuy" secondAttribute="leading" id="Fmn-Mp-aX0"/>
                             <constraint firstItem="HRo-T7-7Wb" firstAttribute="centerX" secondItem="fOL-mF-EZB" secondAttribute="centerX" id="GKl-0S-qB7"/>
@@ -243,15 +253,13 @@
                             <constraint firstItem="v7s-If-lKw" firstAttribute="leading" secondItem="aSj-rP-C43" secondAttribute="trailing" constant="10" id="LEK-DT-F9M"/>
                             <constraint firstItem="hGj-6c-2Sd" firstAttribute="centerX" secondItem="W8g-Wc-Cuy" secondAttribute="centerX" id="N55-XY-2R3"/>
                             <constraint firstItem="HRo-T7-7Wb" firstAttribute="centerY" secondItem="fOL-mF-EZB" secondAttribute="centerY" id="PIH-re-x3Z"/>
-                            <constraint firstItem="Xtm-ZG-BPa" firstAttribute="leading" secondItem="W8g-Wc-Cuy" secondAttribute="leadingMargin" constant="14" id="RIp-jw-Wao"/>
                             <constraint firstAttribute="trailing" secondItem="H6V-cM-8XG" secondAttribute="trailing" id="SZf-T1-Bpd"/>
                             <constraint firstItem="0xf-0q-LNQ" firstAttribute="centerY" secondItem="NqU-NE-vIq" secondAttribute="centerY" id="TbN-Db-CDf"/>
                             <constraint firstItem="H6V-cM-8XG" firstAttribute="bottom" secondItem="fDb-Sr-Uvg" secondAttribute="top" id="W6J-Us-TS0"/>
                             <constraint firstAttribute="trailingMargin" secondItem="v7s-If-lKw" secondAttribute="trailing" constant="-5" id="X1E-eb-t3H"/>
                             <constraint firstItem="H6V-cM-8XG" firstAttribute="leading" secondItem="HRo-T7-7Wb" secondAttribute="leading" id="aRv-Ro-u7X"/>
-                            <constraint firstItem="Xtm-ZG-BPa" firstAttribute="centerX" secondItem="fOL-mF-EZB" secondAttribute="centerX" id="cTb-Om-5Qg"/>
                             <constraint firstItem="v7s-If-lKw" firstAttribute="top" secondItem="SAj-uM-gdK" secondAttribute="bottom" constant="199" id="cyd-VX-0rb"/>
-                            <constraint firstItem="03C-eN-yVN" firstAttribute="centerX" secondItem="Xtm-ZG-BPa" secondAttribute="centerX" id="dNR-0L-8Fk"/>
+                            <constraint firstItem="n2Z-Qb-5cd" firstAttribute="top" secondItem="P6U-qQ-TrV" secondAttribute="bottom" constant="8" id="dpl-14-jXn"/>
                             <constraint firstItem="aSj-rP-C43" firstAttribute="leading" secondItem="8Ko-wS-s79" secondAttribute="trailing" constant="10" id="fSU-vf-skh"/>
                             <constraint firstItem="H6V-cM-8XG" firstAttribute="trailing" secondItem="HRo-T7-7Wb" secondAttribute="trailing" id="hj8-38-dwG"/>
                             <constraint firstItem="aSj-rP-C43" firstAttribute="centerX" secondItem="W8g-Wc-Cuy" secondAttribute="centerX" id="hk1-Kh-ydV"/>
@@ -264,8 +272,6 @@
                             <constraint firstItem="HRo-T7-7Wb" firstAttribute="top" relation="greaterThanOrEqual" secondItem="03C-eN-yVN" secondAttribute="bottom" id="sQP-WV-5hl"/>
                             <constraint firstItem="fOL-mF-EZB" firstAttribute="leading" secondItem="W8g-Wc-Cuy" secondAttribute="leadingMargin" id="t9s-Hd-VG5"/>
                             <constraint firstItem="03C-eN-yVN" firstAttribute="trailing" secondItem="n2Z-Qb-5cd" secondAttribute="trailing" id="v9f-Mt-VsY"/>
-                            <constraint firstItem="Xtm-ZG-BPa" firstAttribute="top" secondItem="hGj-6c-2Sd" secondAttribute="bottom" constant="5" id="wRG-ER-JvP"/>
-                            <constraint firstItem="HRo-T7-7Wb" firstAttribute="top" secondItem="Xtm-ZG-BPa" secondAttribute="bottom" constant="20" id="zaB-Re-C2H"/>
                         </constraints>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
@@ -274,7 +280,6 @@
                         <outlet property="downButton" destination="8Ko-wS-s79" id="glL-MF-t1p"/>
                         <outlet property="percentageLabel" destination="KkX-EA-lFV" id="32M-uh-0vS"/>
                         <outlet property="progressLabel" destination="03C-eN-yVN" id="1Hk-hb-ZLz"/>
-                        <outlet property="progressView" destination="Xtm-ZG-BPa" id="TYp-LL-vWi"/>
                         <outlet property="questionLabel" destination="fOL-mF-EZB" id="Xha-nO-Zvc"/>
                         <outlet property="questionLabelTop" destination="NMG-7F-kGC" id="Le0-vx-fiM"/>
                         <outlet property="surveyButton" destination="n2Z-Qb-5cd" id="sK1-RC-L1U"/>
