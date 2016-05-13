@@ -10,7 +10,7 @@
         <!--Start View Controller-->
         <scene sceneID="Zo2-mH-7TI">
             <objects>
-                <viewController storyboardIdentifier="StartViewController" id="XDv-6g-zyb" customClass="StartViewController" customModule="Quiz" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="StartViewController" id="XDv-6g-zyb" customClass="StartViewController" customModule="Survata_Says" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="bV2-RN-Swt"/>
                         <viewControllerLayoutGuide type="bottom" id="0ue-Wd-Alw"/>
@@ -85,7 +85,7 @@
         <!--Question Table View Controller-->
         <scene sceneID="egr-7H-Fom">
             <objects>
-                <viewController storyboardIdentifier="QuestionTableViewController" id="v1R-kG-ll8" customClass="QuestionTableViewController" customModule="Quiz" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="QuestionTableViewController" id="v1R-kG-ll8" customClass="QuestionTableViewController" customModule="Survata_Says" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="SAj-uM-gdK"/>
                         <viewControllerLayoutGuide type="bottom" id="fDb-Sr-Uvg"/>
@@ -118,10 +118,10 @@
                                             <action selector="nextQuestion:" destination="v1R-kG-ll8" eventType="touchUpInside" id="vaV-bj-jhf"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Take a survey to increase your life by 20%! " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P6U-qQ-TrV">
-                                        <rect key="frame" x="79" y="531" width="216" height="47"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Take a survey to increase your life by 20%! " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="P6U-qQ-TrV">
+                                        <rect key="frame" x="43" y="533" width="288" height="47"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="47" id="ROs-k1-ARM"/>
+                                            <constraint firstAttribute="height" constant="47" id="oWO-Yp-L3h"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -131,13 +131,14 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="JBv-kC-NRC" firstAttribute="centerY" secondItem="H6V-cM-8XG" secondAttribute="centerY" id="1Cp-hv-vrg"/>
+                                    <constraint firstItem="P6U-qQ-TrV" firstAttribute="centerX" secondItem="NMG-7F-kGC" secondAttribute="centerX" id="3tA-pj-AxI"/>
+                                    <constraint firstAttribute="bottom" secondItem="P6U-qQ-TrV" secondAttribute="bottom" constant="87" id="CEQ-22-Bsr"/>
                                     <constraint firstItem="NMG-7F-kGC" firstAttribute="top" secondItem="H6V-cM-8XG" secondAttribute="top" constant="36" id="CcF-Mb-mtS"/>
-                                    <constraint firstItem="P6U-qQ-TrV" firstAttribute="leading" secondItem="H6V-cM-8XG" secondAttribute="leading" constant="79" id="Dx7-c7-FyS"/>
                                     <constraint firstItem="JBv-kC-NRC" firstAttribute="top" secondItem="H6V-cM-8XG" secondAttribute="top" constant="-20" id="Iku-Tf-5jw"/>
                                     <constraint firstItem="JBv-kC-NRC" firstAttribute="leading" secondItem="H6V-cM-8XG" secondAttribute="leading" constant="-20" id="OKO-zV-cTd"/>
                                     <constraint firstItem="NqU-NE-vIq" firstAttribute="trailing" secondItem="H6V-cM-8XG" secondAttribute="trailing" id="aIE-0B-pd9"/>
                                     <constraint firstItem="NMG-7F-kGC" firstAttribute="centerX" secondItem="H6V-cM-8XG" secondAttribute="centerX" id="nBg-56-coi"/>
-                                    <constraint firstItem="P6U-qQ-TrV" firstAttribute="centerX" secondItem="NMG-7F-kGC" secondAttribute="centerX" id="ocb-Zg-tKj"/>
+                                    <constraint firstItem="P6U-qQ-TrV" firstAttribute="leading" secondItem="H6V-cM-8XG" secondAttribute="leading" constant="43" id="nxA-61-jUz"/>
                                     <constraint firstItem="JBv-kC-NRC" firstAttribute="centerX" secondItem="H6V-cM-8XG" secondAttribute="centerX" id="sML-f6-fp5"/>
                                 </constraints>
                             </view>
@@ -259,7 +260,6 @@
                             <constraint firstAttribute="trailingMargin" secondItem="v7s-If-lKw" secondAttribute="trailing" constant="-5" id="X1E-eb-t3H"/>
                             <constraint firstItem="H6V-cM-8XG" firstAttribute="leading" secondItem="HRo-T7-7Wb" secondAttribute="leading" id="aRv-Ro-u7X"/>
                             <constraint firstItem="v7s-If-lKw" firstAttribute="top" secondItem="SAj-uM-gdK" secondAttribute="bottom" constant="199" id="cyd-VX-0rb"/>
-                            <constraint firstItem="n2Z-Qb-5cd" firstAttribute="top" secondItem="P6U-qQ-TrV" secondAttribute="bottom" constant="8" id="dpl-14-jXn"/>
                             <constraint firstItem="aSj-rP-C43" firstAttribute="leading" secondItem="8Ko-wS-s79" secondAttribute="trailing" constant="10" id="fSU-vf-skh"/>
                             <constraint firstItem="H6V-cM-8XG" firstAttribute="trailing" secondItem="HRo-T7-7Wb" secondAttribute="trailing" id="hj8-38-dwG"/>
                             <constraint firstItem="aSj-rP-C43" firstAttribute="centerX" secondItem="W8g-Wc-Cuy" secondAttribute="centerX" id="hk1-Kh-ydV"/>
@@ -294,7 +294,7 @@
         <!--Demo View Controller-->
         <scene sceneID="dx3-js-DIB">
             <objects>
-                <viewController id="kE7-bK-Duz" customClass="DemoViewController" customModule="Quiz" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="kE7-bK-Duz" customClass="DemoViewController" customModule="Survata_Says" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ayq-Br-qN8"/>
                         <viewControllerLayoutGuide type="bottom" id="pKp-uZ-SkS"/>
@@ -335,7 +335,7 @@
         <!--Score View Controller-->
         <scene sceneID="AFD-lc-Gq4">
             <objects>
-                <viewController storyboardIdentifier="ScoreViewController" id="4Ka-wA-UDg" customClass="ScoreViewController" customModule="Quiz" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ScoreViewController" id="4Ka-wA-UDg" customClass="ScoreViewController" customModule="Survata_Says" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="sL3-FN-9pY"/>
                         <viewControllerLayoutGuide type="bottom" id="otX-EF-cQY"/>
