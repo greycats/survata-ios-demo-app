@@ -62,8 +62,8 @@ class SettingsViewController: UIViewController {
 	}
 	
 	@IBAction func reset() {
-		Settings.publisherId = "survata-test"
-		Settings.previewId = "5fd725139884422e9f1bb28f776c702d"
+		Settings.publisherId = "a152f0c5-0ba4-4b3e-8a0a-07ec9f96c5fd"
+		Settings.previewId = nil//"5fd725139884422e9f1bb28f776c702d"
 		publisherIdField.bind(&Settings.publisherId)
 		previewField.bind(&Settings.previewId)
 		contentNameField.bind(&Settings.contentName)

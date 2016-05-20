@@ -275,9 +275,9 @@ class QuestionTableViewController: UIViewController {
                     SVProgressHUD.dismiss()
                 }
                 switch result {
+                
                 case .Completed:
                     SVProgressHUD.showInfoWithStatus("Completed")
-                    return
                 case .Canceled:
                     SVProgressHUD.showInfoWithStatus("Canceled")
                 case .CreditEarned:
@@ -286,6 +286,10 @@ class QuestionTableViewController: UIViewController {
                     SVProgressHUD.showInfoWithStatus("Network not available")
                 case .Skipped:
                     SVProgressHUD.showInfoWithStatus("Skipped")
+                case .InappropriateAge:
+                    SVProgressHUD.showInfoWithStatus("You're not eligible to take a survey because you're too young.")
+                default:
+                    SVProgressHUD.showInfoWithStatus("no opp")
                 }
             }
         } else {
@@ -295,11 +299,12 @@ class QuestionTableViewController: UIViewController {
    
     func createSurvey() {
         if created { return }
-        let option = SurveyDebugOption(publisher: Settings.publisherId)
-        option.preview = Settings.previewId
-        option.zipcode = Settings.forceZipcode
-        option.sendZipcode = Settings.sendZipcode
-        option.contentName = Settings.contentName
+        let option = SurveyOption(publisher: Settings.publisherId)
+//        option.preview = Settings.previewId
+//        option.zipcode = Settings.forceZipcode
+//        option.sendZipcode = Settings.sendZipcode
+        print(NSDate())
+        option.contentName = String(NSDate())
         survey = Survey(option: option)
         
         survey.create {[weak self] result in
@@ -307,8 +312,24 @@ class QuestionTableViewController: UIViewController {
             switch result {
             case .Available:
                 self?.showSurveyButton()
+            case .NotAvailable:
+                print("NOT AVAILABLE")
+                print(self)
             default:
+                print(result)
                 self?.showFull()
+            }
+        }
+    }
+    
+    func checkSurvey() {
+        let publisher = "a152f0c5-0ba4-4b3e-8a0a-07ec9f96c5fd"
+        let option = SurveyOption(publisher: Settings.publisherId)
+        survey.create { availability in
+            if availability == .Available {
+                print("survey is created")
+            } else {
+                
             }
         }
     }
