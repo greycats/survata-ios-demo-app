@@ -303,7 +303,6 @@ class QuestionTableViewController: UIViewController {
 //        option.preview = Settings.previewId
 //        option.zipcode = Settings.forceZipcode
 //        option.sendZipcode = Settings.sendZipcode
-        print(NSDate())
         option.contentName = String(NSDate())
         survey = Survey(option: option)
         
